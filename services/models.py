@@ -1,12 +1,14 @@
-from django.db import models
 from django.core.exceptions import ValidationError
-
-from wagtail.core.models import Page
+from django.db import models
 from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel
+from wagtail.core.models import Page
 from wagtail.images.edit_handlers import ImageChooserPanel
 
 
 class ServiceListingPage(Page):
+    parent_page_types = ["home.HomePage"]
+    subpage_types = ["services.ServicePage"]
+    max_count = 1
 
     template = "services/service_listing_page.html"
 
@@ -26,6 +28,8 @@ class ServiceListingPage(Page):
 
 
 class ServicePage(Page):
+    parent_page_types = ["services.ServiceListingPage"]
+    subpage_types = []
 
     template = "services/service_page.html"
     description = models.TextField(
