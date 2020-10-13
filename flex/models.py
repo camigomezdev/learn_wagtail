@@ -29,7 +29,6 @@ class FlexPage(Page):
                 "pricing_table",
                 blocks.PrincingTableBlock(table_options=NEW_TABLE_OPTIONS),
             ),
-            ("richtext_with_title", blocks.RichTextWithTitle()),
             (
                 "richtext",
                 wagtail_blocks.RichTextBlock(
